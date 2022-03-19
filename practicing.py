@@ -1,38 +1,39 @@
-#导入函数
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>method 1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 import random
-import time
-print("---石头剪刀布猜拳游戏开始---")
-time.sleep(1)
-while True:
-    #所有的出拳结果
-    all_choice = ['石头', '剪刀', '布',4]
-    # 玩家赢的组合结果
-    win_list = [['石头', '剪刀'], ['剪刀', '布'], ['布', '石头']]
-    #电脑出拳
-    computer = random.choice(all_choice[0:3])
-    print('请按下面的提示出拳：[1]石头/[2]剪刀/[3]布/[4]退出')
-    time.sleep(0.5)
-    try:
-        # 从控制台获取玩家要出的拳
-        my_list = int(input("""请输入您的选项: """))
-        player = all_choice[my_list - 1]
-        # 判断胜负
-        if player == 4:
-            print("您已退出，游戏结束！")
-            break
-        else:
-            print("你出的是: %s，电脑出的是: %s" % (player, computer))
-            ##输出带颜色的信息：\033[3开头的是字体颜色/[4开头的是背景色 [1m ##比;[0m更亮更粗 
-            ##30白色 31红色 32黄色 33明黄色 34蓝色 35紫色 36青色
-            #平局
-            if player == computer:
-                print('\033[32;1m平局\033[0m')
-            #玩家赢
-            elif [player, computer] in win_list:
-                print('\033[31;1m你赢了！\033[0m')
-            #电脑赢
-            else:
-                print('\033[34;1m电脑赢了！\033[0m')
-    #玩家输入非法时
-    except Exception as e:
-        print("\033[36;1m输入有误，请输入1-4的整数进行猜拳！\033[0m")
+password_len = int(input("Enter the length of the password: "))
+UPPERCASE = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'p', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',  'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+SPECIAL = ['@', '#', '$', '=', ':', '?', '.', '/', '|', '~', '>', '*', '<']
+COMBINED_LIST = DIGITS + UPPERCASE + LOWERCASE + SPECIAL
+#random.sample() 函数 它将从长度为 password_length 的 COMBINED_LIST 变量中获取随机字符。
+#join() ，它将我们生成的密码连接到左侧的空字符串。
+password = "".join(random.sample(COMBINED_LIST, password_len))
+print(password)
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>method 2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import random
+random_pwd="".join(random.sample('abcdefghijklmnopqrstuvwxyz!@#$%+=-_^&*.?ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',16))
+print(random_pwd)
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>method 3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import random
+def get_random_password():
+# 16位的密码
+    total = 16
+# 2-3位字符，4-5位数字，4-5位大写字母，3-6小写字母
+    num = random.randint(2,3)
+    num1 = random.randint(4,5)
+    num2 = random.randint(4,5)
+    num3 = random.randint(total-num-num1-num2,total-num-num1-num2)
+    password = random.sample('!~@_=?#$%^&*()-+.',num)
+    password1 = random.sample('0123456789',num1)
+    password2 = random.sample('ABCDEFGHIJKLMNOPQRSTUVWXYZ',num2)
+    password3 = random.sample('abcdefghijklmnopqrstuvwxyz',num3)
+    
+#print('{}:{}\n{}:{}\n{}:{}\n{}:{}'.format(num,password,num1,password1,num2,password2,num3,password3))
+    newPasswordList = password + password1 + password2 + password3
+    random.shuffle(newPasswordList)
+    newPassword = ''.join(newPasswordList)
+# print(newPassword)
+    return newPassword
