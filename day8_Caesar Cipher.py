@@ -35,11 +35,11 @@ if num > 1:
            print(num,"Not a prime number")
            print("becuase it has ways of wrinting it as a product ")
            print(i,"*",num//i,"=",num)
-           break
+           continue
    else:
        print(num,"Yes,it is a prime number")
        
 # <=1
 else:
    print(num,"Not a prime number")
-     
+ #break    
