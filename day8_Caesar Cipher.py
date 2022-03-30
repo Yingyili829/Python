@@ -26,7 +26,7 @@ def greet_with(name, location):
 
 # input
 num = int(input("type in a random number: "))
-
+list=[]
 # > 1
 if num > 1:
    # find Composite Number
@@ -35,11 +35,16 @@ if num > 1:
            print(num,"Not a prime number")
            print("becuase it has ways of wrinting it as a product ")
            print(i,"*",num//i,"=",num)
+           a=int(num//i)
+           list.append[a]
+           if i in list:
+            break
            continue
+           
    else:
        print(num,"Yes,it is a prime number")
        
 # <=1
 else:
    print(num,"Not a prime number")
- #break    
+   
