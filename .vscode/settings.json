@@ -1,0 +1,5 @@
+{
+    "editor.rename.enablePreview": true,
+    "editor.unicodeHighlight.includeComments": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false
+}
