@@ -27,13 +27,33 @@ def decrypt(plain_text,shift_amount):
     print(f"The decoded test is {cipher_text}")
 
 
+def caesar(start_text,shift_amount,cipher_direction):
+    cipher_text = ""
+    for letter in start_text:
+        position = list.index(letter)
+        if direction == "encode" :
+            new_position = position + shift_amount
+            new_letter = list[new_position]
+            cipher_text+= new_letter
+            
+        elif direction == "decode":
+            new_position = position - shift_amount
+            new_letter = list[new_position]
+            cipher_text+= new_letter
+        else: 
+            break
+        
+    if direction == "encode": 
+        print(f"The encoded test is {cipher_text}")
+    elif direction == "decode":
+        print(f"The decoded test is {cipher_text}")
+    else:
+        print("please type in encode or decode to execute the process")
+
+caesar(start_text=text,shift_amount=shift,cipher_direction=direction)
+
 #call the function
 # A parameter is the variable listed inside the parentheses in the function definition.
 # An argument is the value that are sent to the function when it is called.
-if direction == "encode" :
-    encrypt(plain_text=text,shift_amount=shift)
-elif direction == "decode":
-    decrypt(plain_text=text,shift_amount=shift)
-else: 
-    print("please type in encode or decode to execute the process")
+
 
