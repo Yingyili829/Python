@@ -1,4 +1,4 @@
-#导入函数
+
 import random
 import time
 print("---石头剪刀布猜拳游戏开始---")
